@@ -17,18 +17,52 @@ It redacts personal data before the model sees it and holds every write action f
   changed since.
 - **Evidence.** What went to the AI model and who approved what is kept in an append-only log.
 
-## MCP tools (Jira)
+## Tools
 
-| Tool | Kind |
-|---|---|
-| `jira_ticket_lesen` · `jira_historie_lesen` · `jira_zeitbuchungen_lesen` | read (redacted) |
-| `jira_suchen` · `jira_zaehlen` · `jira_aehnliche_suchen` · `jira_felder` · `jira_versionen` | read (redacted) |
-| `jira_kommentar_schreiben` · `jira_kommentar_loeschen` · `jira_zeitbuchung_kommentar_leeren` · `jira_anhang_loeschen` | write — held for approval |
-| `jira_status_wechseln` · `jira_ticket_verschieben` · `jira_ticket_anlegen` · `jira_feld_setzen` | write — held for approval |
-| `jira_link_anlegen` · `jira_link_loeschen` | write — held for approval |
-| `jico_selbstauskunft` · `jico_bestand` · `jico_konventionen` · `jico_freigaben_offen` | information about JiCo itself |
+Read tools return redacted data. Write tools are never executed directly: JiCo holds them as a proposal until a
+human approves. Unknown tools are treated as write tools (fail-closed).
 
-Unknown tools are treated as write tools (fail-closed).
+- `jira_ticket_lesen` — read a ticket: summary, description, links, comments (redacted)
+- `jira_historie_lesen` — read the change history of a ticket (redacted)
+- `jira_zeitbuchungen_lesen` — read the worklogs of a ticket (redacted)
+- `jira_suchen` — search Jira with JQL
+- `jira_zaehlen` — count JQL results grouped by a field
+- `jira_aehnliche_suchen` — find similar tickets (duplicates, earlier cases)
+- `jira_felder` — look up field definitions before using them in JQL
+- `jira_versionen` — read the versions of a project
+- `jira_kommentar_schreiben` — propose a comment (held for approval)
+- `jira_kommentar_loeschen` — propose deleting a comment (held for approval)
+- `jira_zeitbuchung_kommentar_leeren` — propose clearing a worklog comment (held for approval)
+- `jira_anhang_loeschen` — propose deleting an attachment (held for approval)
+- `jira_status_wechseln` — propose a workflow transition (held for approval)
+- `jira_ticket_verschieben` — propose moving a ticket to another project (held for approval)
+- `jira_ticket_anlegen` — propose a new ticket (held for approval)
+- `jira_feld_setzen` — propose setting a field (held for approval)
+- `jira_link_anlegen` — propose linking two tickets (held for approval)
+- `jira_link_loeschen` — propose removing a link (held for approval)
+- `jico_selbstauskunft` — how JiCo handles personal data
+- `jico_bestand` — what is stored locally and how fresh it is
+- `jico_konventionen` — the house conventions to follow before proposing a change
+- `jico_freigaben_offen` — proposals waiting for approval
+
+## Configuration
+
+JiCo writes this entry for you: in the Approval Cockpit, *Settings › Connect to AI client › Set up automatically*.
+For reference, the Claude Desktop entry on macOS (`claude_desktop_config.json`; on Windows JiCo inserts its own program path) — JiCo must be installed and running:
+
+```json
+{
+  "mcpServers": {
+    "jico": {
+      "command": "/usr/local/bin/jico",
+      "args": ["bruecke"]
+    }
+  }
+}
+```
+
+Claude Code and GitHub Copilot in VS Code connect over HTTPS to the running JiCo; `jico einbinden` prints the
+ready-made entry with the local address and access token.
 
 ## Getting started
 
