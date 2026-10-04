@@ -40,6 +40,13 @@ human approves. Unknown tools are treated as write tools (fail-closed).
 - `jira_feld_setzen` — propose setting a field (held for approval)
 - `jira_link_anlegen` — propose linking two tickets (held for approval)
 - `jira_link_loeschen` — propose removing a link (held for approval)
+- `confluence_seite_lesen` — read a Confluence page: title, body, comments (redacted)
+- `confluence_historie_lesen` — read the version history of a page (redacted)
+- `confluence_seite_vergleichen` — compare two versions of a page
+- `confluence_seite_anlegen` — propose a new page (held for approval)
+- `confluence_seite_ergaenzen` — propose appending text to a page (held for approval)
+- `confluence_text_ersetzen` — propose replacing a passage on a page (held for approval)
+- `confluence_kommentar_schreiben` — propose a comment on a page (held for approval)
 - `jico_selbstauskunft` — how JiCo handles personal data
 - `jico_bestand` — what is stored locally and how fresh it is
 - `jico_konventionen` — the house conventions to follow before proposing a change
