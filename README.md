@@ -85,6 +85,12 @@ JiCo ist ein lokaler MCP-Server für Jira Data Center: Personendaten werden gesc
 und jede Schreibaktion wartet auf eine menschliche Freigabe. Anleitung:
 <https://getjico.com/jira-data-center-mit-claude/>
 
+## Listed in
+
+- [mcp.so](https://mcp.so/servers/jico-enhanced-mcp-server-for-jira-and-confluence)
+
+Submitted to [Claude Market](https://claudemarket.ai) (review pending).
+
 ## Contact
 
 [support@getjico.com](mailto:support@getjico.com) · Provider: Dr. Kirchhof Ventures GmbH, Düsseldorf
