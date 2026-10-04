@@ -1,7 +1,7 @@
-# JiCo for Jira & Confluence — MCP server for Jira Data Center
+# JiCo for Jira & Confluence — MCP server for Jira Data Center and Jira Cloud
 
-**Use Claude with Jira Data Center without handing personal data to the AI model.** JiCo is a local MCP server
-that sits between your AI client (Claude Desktop, Claude Code, GitHub Copilot in VS Code) and your Jira Data Center.
+**Use Claude with Jira Data Center or Jira Cloud without handing personal data to the AI model.** JiCo is a local MCP server
+that sits between your AI client (Claude Desktop, Claude Code, GitHub Copilot in VS Code) and your Jira (Data Center or Cloud).
 It redacts personal data before the model sees it and holds every write action for a human approval.
 
 > This repository is a **listing for MCP directories**. It contains no source code. JiCo is commercial software,
@@ -68,20 +68,20 @@ ready-made entry with the local address and access token.
 
 1. Register in the [customer portal](https://portal.getjico.com/registrieren) — you receive a seven-day trial licence.
 2. Install the package for your system.
-3. Enter your Jira Data Center address and a personal access token (PAT).
+3. Enter your Jira address and a personal access token (Data Center) or your e-mail address and API token (Cloud).
 4. In the Approval Cockpit, click *Set up automatically* for Claude Desktop or Claude Code.
 
 Step by step: <https://getjico.com/en/jira-data-center-with-claude/>
 
 ## Limits
 
-- Works with Jira **Data Center** today; Jira Cloud is not connected yet.
+- Jira Cloud signs in with an e-mail address and API token; OAuth sign-in is not available yet.
 - No detection finds every piece of personal data in free text.
 - JiCo protects what runs through JiCo. A second, unprotected Jira connection next to it bypasses it.
 
 ## Deutsch
 
-JiCo ist ein lokaler MCP-Server für Jira Data Center: Personendaten werden geschwärzt, bevor das KI-Modell sie sieht,
+JiCo ist ein lokaler MCP-Server für Jira Data Center und Jira Cloud: Personendaten werden geschwärzt, bevor das KI-Modell sie sieht,
 und jede Schreibaktion wartet auf eine menschliche Freigabe. Anleitung:
 <https://getjico.com/jira-data-center-mit-claude/>
 
